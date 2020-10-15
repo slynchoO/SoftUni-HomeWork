@@ -1,0 +1,25 @@
+function maxSequence(input) {
+
+    let similarNums = [];
+    
+
+    for(let i = 0; i < input.length; i++) {
+        let currentSimilar = [input[i]];
+
+        for(let k = i+1; k < input.length; k++) {
+            if(input[i] === input[k]) {
+                currentSimilar.push(input[k]);
+            } else {
+                break;
+            }
+        }
+
+        if(similarNums.length < currentSimilar.length) {
+            similarNums = currentSimilar;
+        }
+
+
+    }
+    console.log(similarNums.join(' '));   
+
+}
