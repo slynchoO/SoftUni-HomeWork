@@ -1,0 +1,9 @@
+function lowerToUpper(char) {
+    let asciValue = char.charCodeAt();
+
+    if(asciValue >= 65 && asciValue <= 90) {
+        console.log('upper-case');
+    } else if(asciValue >= 97 && asciValue <= 122) {
+        console.log('lower-case');
+    }
+}
