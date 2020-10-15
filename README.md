@@ -1,1 +1,1 @@
-# SoftUni-HomeWork
+# SoftUni-JavaScript-Fundamentals
