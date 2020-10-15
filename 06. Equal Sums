@@ -1,0 +1,29 @@
+function equalSum(input) {
+    
+    let isIndex = false;
+    for(let i = 0; i < input.length; i++) {
+        let rightSum = 0;
+        let leftSum = 0;
+        if(i !== 0) {
+            for(let k = 0; k < i; k++) {
+                leftSum += input[k];
+            }
+        }
+
+        if(i !== input.length-1) {
+            for(let r = i+1; r < input.length; r++) {
+                rightSum += input[r];
+            }
+        }
+
+        if(rightSum === leftSum) {
+            isIndex = true;
+            console.log(i);
+        } 
+
+    }
+
+    if(!isIndex) {
+        console.log('no');
+    }
+}
