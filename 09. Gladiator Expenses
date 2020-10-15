@@ -1,0 +1,19 @@
+function gladiatorExpenses(lostFightsCount, helmetPrice, swordPrice, shieldPrice, armorPrice) {
+
+    let brokenHelmetCount = Math.floor(lostFightsCount / 2);
+    let brokenSwordCount = Math.floor(lostFightsCount / 3)
+    let brokenShieldCount = Math.floor(lostFightsCount / 6);
+    let brokenArmorCount = Math.floor(lostFightsCount / 12);
+
+    // expenses
+
+    let totalHelmets = brokenHelmetCount * helmetPrice;
+    let totalSwords = brokenSwordCount * swordPrice;
+    let totalShields = brokenShieldCount * shieldPrice;
+    let totalArmor = brokenArmorCount * armorPrice;
+
+    //total
+
+    let total = totalHelmets + totalSwords + totalShields + totalArmor;
+
+    console.log(`Gladiator expenses: ${total.toFixed(2)} aureus`);
