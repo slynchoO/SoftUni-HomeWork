@@ -1,0 +1,14 @@
+function magicSum(input, magicNum) {
+    
+    for(let i = 0; i < input.length; i++) {
+        let currentElement = Number(input[i]);
+
+        for(let k = i+1; k < input.length; k++) {
+            let magicSum = currentElement + Number(input[k]);
+
+            if(magicSum === magicNum) {
+                console.log(`${input[i]} ${input[k]}`);
+            }
+        }
+    }
+}
