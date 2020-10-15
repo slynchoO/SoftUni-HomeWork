@@ -1,0 +1,18 @@
+function subsequence(input) {
+    let currentBigger = 0;
+    let previousBigger = 0;
+    let newArr = [];
+
+    for(let i = 0; i < input.length; i++) {
+        currentBigger = input[i];
+
+        if(previousBigger <= currentBigger) {
+            newArr.push(currentBigger);
+            previousBigger = currentBigger;
+        }
+
+    }
+
+    console.log(newArr.join(' '));
+    
+}
