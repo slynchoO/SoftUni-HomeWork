@@ -1,0 +1,22 @@
+function maxNumber(input) {
+    
+    let topIntegers = [];
+
+    for(let i = 0; i < input.length; i++) {
+        let isBigger = true;
+
+        for(let k = i + 1; k <input.length; k++) {
+            if(input[i] <= input[k]) {
+                isBigger = false;
+                break;
+            }
+        }
+
+        if(isBigger) {
+            topIntegers.push(input[i]);
+        }
+    }
+
+    console.log(topIntegers.join(' '));
+
+}
