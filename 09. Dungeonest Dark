@@ -1,0 +1,61 @@
+function dungenestDark(input) {
+    // initial health 100 and initial coins 0
+    let dungeon = input[0].split('|');
+    // razdelqm inputa na otdelnite chasti ot dungena
+    let health = 100;
+    let coins = 0;
+    let bestRoom = 0;
+    let isDead = false;
+
+    for (let i = 0; i < dungeon.length; i++) {
+        let currentRoom = dungeon[i].split(' ');
+
+        let roomObject = currentRoom[0];
+        let roomNumbers = Number(currentRoom[1]);
+        bestRoom++;
+
+        switch(roomObject) {
+            case 'potion':
+                if(health + roomNumbers > 100) {
+                    roomNumbers = 100 - health;
+                    health = 100;
+                } else {
+                    health += roomNumbers;
+                }
+
+                console.log(`You healed for ${roomNumbers} hp.`);
+                console.log(`Current health: ${health} hp.`);
+            break;
+
+            case 'chest':
+                coins += roomNumbers;
+                console.log(`You found ${roomNumbers} coins.`);
+            break;
+            default:
+                health -= roomNumbers;
+
+              if(health > 0) {
+                console.log(`You slayed ${roomObject}.`);
+              } else {
+                console.log(`You died! Killed by ${roomObject}.`);
+                console.log(`Best room: ${bestRoom}`);
+                isDead = true;
+              }
+            break;
+        }
+
+
+
+        if(isDead) {
+            break;
+        }
+    }
+
+    if(!isDead) {
+        console.log(`You've made it!`);
+        console.log(`Coins: ${coins}`);
+        console.log(`Health: ${health}`);
+    }
+
+    
+}
