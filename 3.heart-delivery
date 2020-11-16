@@ -1,0 +1,49 @@
+function heartDelivery(input) {
+    let neighborhood = input.shift().split('@').map(Number);
+    let index = 0;
+
+    for(let i = 0; i < input.length; i++) {
+
+        if(input[i] !== 'Love!') {
+            let command = input[i].split(' ');
+            let jump = Number(command[1]);
+            
+            index += jump;
+
+            if(index >= neighborhood.length) {
+                index = 0;
+            }
+
+            if(neighborhood[index] === 0) {
+                console.log(`Place ${index} already had Valentine's day.`);
+            } else {
+                neighborhood[index] -= 2;
+                if(neighborhood[index] === 0) {
+                    console.log(`Place ${index} has Valentine's day.`);
+                }
+            }
+
+
+        } else {
+            break;
+        }
+    }
+
+    console.log(`Cupid's last position was ${index}.`);
+
+    let isSuccess = true;
+    let count = 0;
+
+    for(let house of neighborhood) {
+        if(house != 0) {
+            isSuccess = false;
+            count++;
+        }
+    }
+
+    if(isSuccess) {
+        console.log(`Mission was successful.`);
+    } else {
+        console.log(`Cupid has failed ${count} places.`);
+    }
+}
