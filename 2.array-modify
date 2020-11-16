@@ -1,0 +1,40 @@
+function arrayModifier(input) {
+    let initialArray = input.shift().split(' ');
+    // console.log(initialArray.length);
+
+    for(let i = 0; i < input.length; i++) {
+        let currentCommand = input[i].split(' ');
+        let action = currentCommand[0];
+        let firstIndex = currentCommand[1];
+        let endIndex = currentCommand[2];
+        let isEnd = false;
+
+        switch(action) {
+            case 'swap':
+                let initialFirst = initialArray[firstIndex]
+                let initialLast = initialArray[endIndex];
+                initialArray[endIndex] = initialFirst;
+                initialArray[firstIndex] = initialLast;
+            break;
+            case 'multiply':
+                let multiply = Number(initialArray[firstIndex]) * Number(initialArray[endIndex]);
+                initialArray[firstIndex] = multiply;
+            break;
+            case 'decrease':
+                for(let i = 0; i < initialArray.length;i++) {
+                    let currentNumber = Number(initialArray[i]);
+                    let decrease = currentNumber - 1;
+                    initialArray[i] = decrease;
+                }
+            break;
+            case 'end':
+                isEnd = true;
+            break;
+        }
+
+        if(isEnd) {
+            break;
+        }
+    }
+    console.log(initialArray.join(', '));
+}
