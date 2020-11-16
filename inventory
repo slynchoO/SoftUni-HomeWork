@@ -1,0 +1,49 @@
+function inventory(input) {
+    let collectingItems = input.shift().split(', ');
+
+    for (let i = 0; i < input.length; i++) {
+        let command = input[i];
+
+        if (command != 'Craft!') {
+            command = input[i].split(' - ');
+            let item = command[1];
+
+            switch (command[0]) {
+                case 'Collect':
+                    if (!collectingItems.includes(item)) {
+                        collectingItems.push(item);
+                    }
+                    break;
+                case 'Drop':
+                    if (collectingItems.includes(item)) {
+                        let index = collectingItems.indexOf(item);
+                        collectingItems.splice(index, 1);
+                    }
+                    break;
+                case 'Combine Items':
+                    let splitted = item.split(':');
+
+
+                    if (collectingItems.includes(splitted[0])) {
+                        let index = collectingItems.indexOf(splitted[0])
+                        collectingItems.splice(index+1, 0, splitted[1]);
+                    }
+                    break;
+                case 'Renew':
+                    if (collectingItems.includes(item)) {
+                        let index = collectingItems.indexOf(item);
+                        collectingItems.splice(index, 1);
+                        collectingItems.push(item);
+                    }
+                    break;
+            }
+
+        } else {
+            console.log(collectingItems.join(', '));
+        }
+
+    }
+
+
+
+}
