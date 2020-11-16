@@ -1,0 +1,22 @@
+function storeProvision(currentStock, orderedStock) {
+    let shop = {};
+
+    for(let i = 0; i < currentStock.length; i+=2) {
+        let element = currentStock[i];
+        shop[element] = Number(currentStock[i+1])
+    }
+
+    for(let i = 0; i < orderedStock.length; i+=2) {
+        let element = orderedStock[i];
+        if(shop.hasOwnProperty(element)) {
+            shop[element] += Number(orderedStock[i+1]);
+        } else {
+            shop[element] = Number(orderedStock[i+1]);
+        }
+    }
+
+    Object.keys(shop).forEach( key => {
+        console.log(`${key} -> ${shop[key]}`);
+    })
+   
+}
