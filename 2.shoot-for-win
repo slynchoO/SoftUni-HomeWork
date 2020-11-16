@@ -1,0 +1,36 @@
+function shootForTheWin(input) {
+    let targets = input.shift().split(' ').map(Number);
+    // console.log(targets);
+
+    for (let i = 0; i < input.length; i++) {
+        
+        if (input[i] === 'End') {
+            break;
+        } 
+
+        let currentTarget = Number(input[i]);
+        
+        if(targets[currentTarget] !== undefined && targets[currentTarget] !== -1){
+            let targetValue = targets[currentTarget];
+            targets[currentTarget] = -1;
+
+
+            targets = targets.map(x => {
+                if (x === -1)
+                    return x;
+
+                if (x > targetValue) {
+                    return x - targetValue;
+                }
+
+                return x + targetValue;
+            })
+
+        }
+
+    }
+
+    let shootTargets = targets.filter(x => x === -1).length;
+
+    console.log(`Shot targets: ${shootTargets} -> ${targets.join(' ')}`);
+}
